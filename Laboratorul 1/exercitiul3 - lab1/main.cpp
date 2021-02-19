@@ -4,7 +4,9 @@
 
 using namespace std;
 
-void partitie(char a[][256], int p, int n, int &poz)
+
+//incercare esuata de quick, trebuie sa revin sa rectific :)
+/*void partitie(char a[][256], int p, int n, int &poz)
 {
     int x = strlen(a[p]);
     char sir_x[256];
@@ -34,14 +36,14 @@ void partitie(char a[][256], int p, int n, int &poz)
 
 void quick(char a[][256], int p, int n)
 {
-    int poz;
     while(p<n)
     {
+        int poz;
         partitie(a, p, n, poz);
         quick(a, p, poz-1);
         quick(a, poz+1, n);
     }
-}
+}*/
 
 int main()
 {
@@ -61,19 +63,26 @@ int main()
 
     int n=i, j;
 
-    /*for(i=0; i<=n; i++)
+    for(i=0; i<=n; i++)
         for(j=i+1; j<=n-1; j++)
             if(strlen(a[i]) < strlen(a[j]))
             {
                 strcpy(b, a[i]);
                 strcpy(a[i], a[j]);
                 strcpy(a[j], b);
-            }*/
-    quick(a, 0, n-1);
+            }
 
     for(i=0; i<=n; i++)
-        cout<<a[i]<<"\n";
+        for(j=i+1; j<=n-1; j++)
+            if(strcmp(a[i], a[j])>0 && strlen(a[i])==strlen(a[j]))
+            {
+                strcpy(b, a[i]);
+                strcpy(a[i], a[j]);
+                strcpy(a[j], b);
+            }
 
+    for(i=0; i<=n; i++)
+        printf("%s\n", a[i]);
 
     return 0;
 }
