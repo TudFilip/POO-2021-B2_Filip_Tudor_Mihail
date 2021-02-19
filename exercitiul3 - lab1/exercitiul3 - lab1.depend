@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1613739209 source:d:\desktop\facultate\semestrul 2\poo\copie repo poo\poo-2021\exercitiul3 - lab1\main.cpp
+	<iostream>
+	<stdio.h>
+	<cstring>
+
