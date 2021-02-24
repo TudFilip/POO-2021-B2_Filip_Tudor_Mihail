@@ -7,7 +7,7 @@ void NumberList::Init()
 
 bool NumberList::Add(int x)
 {
-    if (count == 9)
+    if (count == 10)
         return false;
     numbers[count] = x;
     count++;
