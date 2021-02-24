@@ -2,12 +2,8 @@
 
 #include "StudentClass.h"
 
-class Functions 
-{
-public:
-	static int CompareName(Student s1, Student s2);
-	static int CompareGradeEng(Student s1, Student s2);
-	static int CompareGradeMat(Student s1, Student s2);
-	static int CompareGradeHst(Student s1, Student s2);
-	static int CompareAverageGrade(Student s1, Student s2);
-};
+int CompareName(Student s1, Student s2);
+int CompareGradeEng(Student s1, Student s2);
+int CompareGradeMat(Student s1, Student s2);
+int CompareGradeHst(Student s1, Student s2);
+int CompareAverageGrade(Student s1, Student s2);

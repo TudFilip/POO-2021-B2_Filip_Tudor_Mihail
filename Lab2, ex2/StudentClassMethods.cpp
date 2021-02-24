@@ -1,11 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "StudentClass.h"
 
 void Student::SetName()
 {
-	cin.getline(name, 255);
+	char name_student[256];
+	cin.getline(name_student, 255);
+	strcpy(name, name_student);
 }
 
-void Student::GetName(char* student_name)
+void Student::GetName(char student_name[256])
 {
 	strcpy(student_name, name);
 }
@@ -42,5 +45,5 @@ void Student::GetGradeMat(float& x)
 
 void Student::AverageGrade(float& x)
 {
-	 x = (english + history + mathematics) / 3.0;
+	 x = 1.0f * ((english + history + mathematics)) / 3.0;
 }
