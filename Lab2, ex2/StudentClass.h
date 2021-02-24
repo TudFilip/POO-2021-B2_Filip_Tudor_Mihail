@@ -14,12 +14,12 @@ private:
 
 public:
 	void SetName();
-	void GetName(char *student_name);
-	void SetGradeEng();
-	void SetGradeMat();
-	void SetGradeHst();
-	void GetGradeEng();
-	void GetGradeMat();
-	void GetGradeHst();
-
-}
+	void GetName(char* student_name);
+	void SetGradeEng(float x);
+	void SetGradeMat(float x);
+	void SetGradeHst(float x);
+	void GetGradeEng(float& x);
+	void GetGradeMat(float& x);
+	void GetGradeHst(float& x);
+	void AverageGrade(float& x);
+};
