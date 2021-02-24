@@ -42,5 +42,5 @@ void Student::GetGradeMat(float& x)
 
 void Student::AverageGrade(float& x)
 {
-	x = (english + history + mathematics) / 3.0;
+	 x = (english + history + mathematics) / 3.0;
 }
