@@ -15,16 +15,21 @@ bool NumberList::Add(int x)
 
 void NumberList::Sort()
 {
-    int i, j;
-    for (i = 0; i <= count - 1; i++)
-        for (j = i + 1; j <= count; j++)
+    int i, j, aux;
+    for (i = 0; i < count - 1; i++)
+        for (j = i + 1; j < count; j++)
             if (numbers[i] > numbers[j])
-                switch (numbers[i], numbers[j]);
+            {
+                aux = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j] = aux;
+            }
 }
 
 void NumberList::Print()
 {
     cout << count << '\n';
-    for (int i = 0; i <= count; i++)
+    for (int i = 0; i < count; i++)
         cout << numbers[i] << ' ';
+    cout << '\n';
 }
