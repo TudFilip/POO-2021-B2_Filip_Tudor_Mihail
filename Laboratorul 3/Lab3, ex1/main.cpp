@@ -14,10 +14,10 @@ int main()
 	cout << "---------------------------------\n\n";
 	cout << "Suma unei liste oarecare de 9 elemente este: " << Math::Add(9, 2, 5, 4, 13, 14, 20, 75, 21, 18) << "\n\n";
 	cout << "---------------------------------\n\n";
-	char s1[] = "1970";
-	char s2[] = "230";
-	//char *s3 = Math::Add(s1, s2);
-	cout << "Suma a unui string \"1970\" cu alt string \"230\" este: " << Math::Add(s1,s2);
+	const char *s1 = "1970";
+	const char *s2 = "230";
+	char *s3 = Math::Add(s1, s2);
+	cout << "Suma a unui string \"1970\" cu alt string \"230\" este: " << *s3;
 
 	return 0;
 }

@@ -141,7 +141,7 @@ void Canvas::Print()
 	for (i = 0; i <= width; i++)
 	{
 		for (j = 0; j <= height; j++)
-			cout << matrix[j][i] << ' ';
+			cout << matrix[i][j] << ' ';
 		cout << '\n';
 	}
 }
@@ -151,5 +151,5 @@ void Canvas::Clear()
 	int i, j;
 	for (i = 0; i <= width; i++)
 		for (j = 0; j <= height; j++)
-			matrix[j][i] = 32;
+			matrix[i][j] = 32;
 }

@@ -70,5 +70,6 @@ char* Math::Add(const char* s1, const char* s2)
 	char s3[100];
 	_itoa_s(number3, s3, 10);
 	
+
 	return s3;
 }
