@@ -66,8 +66,8 @@ char* Math::Add(const char* s1, const char* s2)
 	long int number2 = atoi(s2);
 	long int number3 = number1 + number2;
 	
-	char* s3;
-	itoa(number3, s3, 10);
+	char s3[100];
+	_itoa_s(number3, s3, 10);
 	
 	return s3;
 }
