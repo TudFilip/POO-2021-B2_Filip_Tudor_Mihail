@@ -42,16 +42,17 @@ int Math::Mul(double a, double b, double c)
 
 int Math::Add(int count, ...)
 {
-	int sum = 0, i = 0, prm;
+	int sum = 0, i, prm;
 	va_list arg;
 
 	va_start(arg, count);
-	while (i < count)
+	
+	for(i=0;i<count;i++)
 	{
 		prm = va_arg(arg, int);
 		sum += prm;
-		i++;
 	}
+
 	va_end(arg);
 
 	return sum;

@@ -12,7 +12,7 @@ int main()
 	cout << "Inmultirea numerelor 27.3 si 12.5 da: " << Math::Mul(27.3, 12.5) << '\n';
 	cout << "Inmultirea numerelor 14.5, 15.5 si 5.3 da: " << Math::Mul(14.5, 15.5, 5.3) << "\n\n";
 	cout << "---------------------------------\n\n";
-	cout << "Suma unei liste oarecare de 8 elemente este: " << Math::Add(8, 2, 5, 10, 20, 13, 31, 60, 27) << "\n\n";
+	cout << "Suma unei liste oarecare de 9 elemente este: " << Math::Add(9, 2, 5, 4, 13, 14, 20, 75, 21, 18) << "\n\n";
 	cout << "---------------------------------\n\n";
 	char s1[] = "1970";
 	char s2[] = "230";
