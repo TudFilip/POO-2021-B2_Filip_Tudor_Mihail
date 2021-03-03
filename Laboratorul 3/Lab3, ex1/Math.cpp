@@ -57,3 +57,17 @@ int Math::Add(int count, ...)
 	return sum;
 }
 
+char* Math::Add(const char* s1, const char* s2)
+{
+	if (s1 == nullptr || s2 == nullptr)
+		return nullptr;
+	
+	long int number1 = atoi(s1);
+	long int number2 = atoi(s2);
+	long int number3 = number1 + number2;
+	
+	char* s3;
+	itoa(number3, s3, 10);
+	
+	return s3;
+}
