@@ -215,4 +215,49 @@ Sort::Sort(char* str)
 		}
 		word = strtok(NULL, ",");
 	}
+}
 
+
+
+void Sort::Print()
+{
+	node* curent_node = new node;
+	curent_node = L.first;
+
+	while (curent_node != L.right)
+	{
+		cout << curent_node->info << " ";
+		curent_node = curent_node->next;
+	}
+	cout << "\n\n";
+}
+
+int Sort::GetElementsCount()
+{
+	node* curent_node = new node;
+	curent_node = L.first;
+
+	int count = 0;
+	while (curent_node != L.right)
+	{
+		count++;
+		curent_node = curent_node->next;
+	}
+	return count;
+}
+
+int Sort::GetElementFromIndex(int index)
+{
+	node* curent_node = new node;
+	curent_node = L.first;
+
+	while (curent_node != L.right)
+	{
+		index--;
+		if (index == 0)
+			return curent_node->info;
+		curent_node = curent_node->next;
+	}
+	if (index != 0)
+		return -1;
+}
