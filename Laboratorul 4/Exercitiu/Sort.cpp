@@ -264,21 +264,48 @@ void Sort::BubbleSort(bool ascendent)
 	int i = 0, j;
 	bool swap;
 	int lenght = GetElementsCount();
-	node* curent_node = new node;
-	curent_node = L.first;
 
 	while (i < lenght - 1)
 	{
 		swap = false;
-		j = 0;
+		j = 1;
 		node* curent_element = new node;
 		curent_element = L.first;
 
-		while (j < lenght - i - 1)
+		while (j <= lenght - i - 1)
 		{
-
+			if (ascendent)
+			{
+				if (GetElementFromIndex(j) > GetElementFromIndex(j + 1))
+				{
+					int tmp = curent_element->info;
+					curent_element->info = curent_element->next->info;
+					curent_element->next->info = tmp;
+					swap = true;
+				}
+			}
+			else
+			{
+				if (GetElementFromIndex(j) < GetElementFromIndex(j + 1))
+				{
+					int tmp = curent_element->info;
+					curent_element->info = curent_element->next->info;
+					curent_element->next->info = tmp;
+					swap = true;
+				}
+			}
+			curent_element = curent_element->next;
+			j++;
 		}
+
+		if (!swap)
+			break;
+		i++;
 	}
+}
+
+void Sort::QuickSort(bool ascendent)
+{
 
 }
 
