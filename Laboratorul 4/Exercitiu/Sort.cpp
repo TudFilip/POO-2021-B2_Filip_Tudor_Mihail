@@ -55,6 +55,7 @@ Sort::Sort(int* init)
 	L.left->next = L.right;
 	L.left->prev = nullptr;
 
+	int lenght = sizeof(init) / sizeof(init[0]);
 	int i = 0;
 
 	node* new_node = new node;
@@ -68,7 +69,7 @@ Sort::Sort(int* init)
 	L.curent = L.first;
 
 	i++;
-	while (init[i] != NULL)
+	while (i < lenght)
 	{
 		node* new_node = new node;
 		new_node->info = init[i];
@@ -306,7 +307,31 @@ void Sort::BubbleSort(bool ascendent)
 
 void Sort::QuickSort(bool ascendent)
 {
+	
+	if (L.left != L.right)
+	{
+		int tmp;
+		node* pivot = new node;
+		pivot = L.left;
+		node* i = new node;
+		i = L.left->next;
+		node* j = new node;
+		j = L.left;
+		
+		while (j->next != L.right)
+		{
+			if (j->info >= pivot->info)
+			{
+				tmp = j->info;
+				j->info = i->info;
+				i->info = tmp;
+				i = i->next;
+			}
+		}
+		tmp = i->next->info;
 
+
+	}
 }
 
 void Sort::Print()
