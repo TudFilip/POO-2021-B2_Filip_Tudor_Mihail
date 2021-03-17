@@ -15,7 +15,10 @@ public:
 	Number(const Number& nr);
 	Number(Number&& nr);
 
-	friend operator+(const Number& nr1, const Number& nr2);
+	friend int operator+(const Number& nr1, const Number& nr2);
+	friend int operator-(const Number& nr1, const Number& nr2);
+
+
 
 	// add operators and copy/move constructor
 	void SwitchBase(int newBase);
