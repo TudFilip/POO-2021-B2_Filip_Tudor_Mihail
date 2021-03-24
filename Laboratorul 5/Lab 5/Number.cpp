@@ -2,22 +2,22 @@
 
 Number::Number(const char* nr_value, int nr_base)
 {
-	value = new char[strlen(nr_value) + 1];
-	memcpy(&value, nr_value, strlen(nr_value) + 1);
+	value = new char[strlen(nr_value)];
+	memcpy(value, nr_value,strlen(nr_value) + 1);
 	base = nr_base;
 }
-
+/*
 Number::~Number()
 {
 	delete value;
 	value = nullptr;
 	base = 0;
 }
+*/
 
 Number::Number(const Number& nr)
 {
-	value = new char[strlen(nr.value) + 1];
-	memcpy(&value, nr.value, strlen(nr.value) + 1);
+	memcpy(value, nr.value, strlen(nr.value) + 1);
 	base = nr.base;
 }
 
@@ -29,73 +29,58 @@ Number::Number(Number&& nr)
 	nr.base = 0;
 }
 
+/*int operator+(const Number& nr1, const Number& nr2)
+{
 
+}*/
 
 void Number::SwitchBase(int newBase)
 {
-	if (newBase != base)
-	{
+	int x=0;
+	if (base != 10) {
 		int digit;
-		int newValue;
-		if (base != 10)
+		int power = 1;
+		for (int i = 0; i < strlen(value); i++) 
 		{
-			newValue = 0;
-			int power = GetDigitsCount() - 1;
-			for (int cf = 0; cf < GetDigitsCount(); cf++)
-			{
-				if (value[cf] >= '0' && value[cf] <= '9')
-					digit = value[cf] - '0';
-				else
-					if (value[cf] == 'A')
-						digit = 10;
-					else
-						if (value[cf] == 'B')
-							digit = 11;
-						else
-							if (value[cf] == 'C')
-								digit = 12;
-							else
-								if (value[cf] == 'D')
-									digit = 13;
-								else
-									if (value[cf] == 'E')
-										digit = 14;
-									else
-										if (value[cf] == 'F')
-											digit = 15;
-				newValue += digit * (int)pow(base, power);
-				power--;
-			}
-		}
-
-		if (newBase != 10)
-		{
-			int tmpValue;
-			if (base != 10)
-				tmpValue = newValue;
+			if (value[i] >= 'A') 
+				digit = 10 + int(value[i]) - 65;
 			else
-				tmpValue = atoi(value);
-			newValue = 0;
-			int p = 1;
-			while (tmpValue != 0)
-			{
-				if ((tmpValue % newBase) > 0 && (tmpValue % newBase) <= 9)
-					digit = tmpValue % newBase;
-				else
-					if ((tmpValue % newBase))
-						newValue = newValue + (tmpValue % newBase) * p;
-				p *= 10;
-			}
+				digit = int(value[i]) - 48;
+			x = x + digit * power;
+			power *= base;
 		}
+		base = 10;
+	}
+	char *rest = new char[100];
+	if (newBase != 10) 
+	{
+		for (int i = 0; i < strlen(value); i++)
+		{
+			int r = x % newBase;
+			x /= newBase;
+			if (r >= 10)
+				rest[i] = 65 + (r - 10);
+			else
+				rest[i] = 48 + r;
+		}
+	}
 
+	if (newBase == 10) {
+		memcpy(value, rest, strlen(rest) + 1);
+	}
+	else
+	{
+		char tmp[100];
+		for (int i = 0; i < strlen(value); i++)
+			tmp[i] = rest[strlen(value) - i - 1];
+		memcpy(value, tmp, strlen(value) + 1);
 	}
 	base = newBase;
-
 }
 
 void Number::Print()
 {
-	cout << "The number value is: " << value << "\n";
+	cout << "The number value is: " << value << '\n';
 	cout << "The current base of the number is: " << base << "\n\n";
 }
 
