@@ -20,4 +20,9 @@ public:
 	void virtual AverageSunnySpeed(int value) = 0;
 	void virtual AverageSnowSpeed(int value) = 0;
 	int virtual Speed(weather weatherType) = 0;
+	void virtual BrandName() = 0;
+	void virtual SetFinishTime(double value) = 0;
+	double virtual FinishTime() = 0;
+	int virtual FuelCapacity() = 0;
+	double virtual FuelConsumption() = 0;
 };
