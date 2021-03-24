@@ -59,3 +59,13 @@ double Toyota::FuelConsumption()
 {
 	return fuel_consumption;
 }
+
+Toyota::Toyota(const Toyota& t)
+{
+	fuel_capacity = t.fuel_capacity;
+	fuel_consumption = t.fuel_consumption;
+	avg_speed_rain = t.avg_speed_rain;
+	avg_speed_snow = t.avg_speed_snow;
+	avg_speed_sunny = t.avg_speed_sunny;
+	finishTime = t.finishTime;
+}

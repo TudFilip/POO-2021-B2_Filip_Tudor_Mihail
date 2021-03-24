@@ -32,4 +32,5 @@ public:
 		AverageSunnySpeed(155);
 		AverageSnowSpeed(110);
 	}
+	Toyota(const Toyota& t);
 };

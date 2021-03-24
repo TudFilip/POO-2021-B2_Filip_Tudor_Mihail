@@ -32,4 +32,5 @@ public:
 		AverageSunnySpeed(110);
 		AverageSnowSpeed(85);
 	}
+	Dacia(const Dacia& d);
 };

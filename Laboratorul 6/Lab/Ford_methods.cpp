@@ -59,3 +59,13 @@ double Ford::FuelConsumption()
 {
 	return fuel_consumption;
 }
+
+Ford::Ford(const Ford& f)
+{
+	fuel_capacity = f.fuel_capacity;
+	fuel_consumption = f.fuel_consumption;
+	avg_speed_rain = f.avg_speed_rain;
+	avg_speed_snow = f.avg_speed_snow;
+	avg_speed_sunny = f.avg_speed_sunny;
+	finishTime = f.finishTime;
+}

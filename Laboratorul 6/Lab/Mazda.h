@@ -32,4 +32,5 @@ public:
 		AverageSunnySpeed(140);
 		AverageSnowSpeed(100);
 	}
+	Mazda(const Mazda& m);
 };

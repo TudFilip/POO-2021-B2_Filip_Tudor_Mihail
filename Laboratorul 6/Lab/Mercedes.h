@@ -32,4 +32,5 @@ public:
 		AverageSunnySpeed(160);
 		AverageSnowSpeed(110);
 	}
+	Mercedes(const Mercedes& m);
 };

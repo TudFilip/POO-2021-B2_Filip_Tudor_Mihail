@@ -32,4 +32,5 @@ public:
 		AverageSunnySpeed(130);
 		AverageSnowSpeed(90);
 	}
+	Ford(const Ford& f);
 };

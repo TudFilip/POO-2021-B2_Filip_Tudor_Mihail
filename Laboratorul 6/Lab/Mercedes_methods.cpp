@@ -59,3 +59,13 @@ double Mercedes::FuelConsumption()
 {
 	return fuel_consumption;
 }
+
+Mercedes::Mercedes(const Mercedes& m)
+{
+	fuel_capacity = m.fuel_capacity;
+	fuel_consumption = m.fuel_consumption;
+	avg_speed_rain = m.avg_speed_rain;
+	avg_speed_snow = m.avg_speed_snow;
+	avg_speed_sunny = m.avg_speed_sunny;
+	finishTime = m.finishTime;
+}
