@@ -24,12 +24,8 @@ void Circuit::Race()
 	for (int index = 0; index < participants; index++)
 	{
 		max_distance = cars[index]->FuelCapacity() / cars[index]->FuelConsumption();
-		while (floor(max_distance) < max_distance)
-		{
-			max_distance *= 10;
-		}
 
-		if (max_distance >= length)
+		if (max_distance * 100 >= length)
 		{
 			time = length / (double)cars[index]->Speed(weatherType);
 			cars[index]->SetFinishTime(time);
