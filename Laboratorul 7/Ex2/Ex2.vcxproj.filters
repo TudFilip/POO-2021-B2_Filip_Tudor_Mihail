@@ -18,6 +18,9 @@
     <ClInclude Include="Template_Vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="vector_methods.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
