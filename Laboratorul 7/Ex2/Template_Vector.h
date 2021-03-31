@@ -16,4 +16,8 @@ public:
 	T& pop();
 	void remove(int index);
 	void insert(int index, T* value);
+	const T& get(int index);
+	void set(int index, T* value);
+	int count();
+	void print();
 };

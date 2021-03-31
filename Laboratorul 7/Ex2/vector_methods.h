@@ -52,6 +52,49 @@ void vector<T>::insert(int index, T* value)
 		break;
 	}
 
-	for(int i = index; i<count; i++)
+	for (int i = index; i < count; i++)
+		vector[i + 1] = vector[i];
+	vector[index] = (*value);
+	count++;
+}
 
-}	
+template<class T>
+const T& vector<T>::get(int index)
+{
+	if (index >= count)
+	{
+		cout << "Wrond index!\n";
+		return nullptr;
+	}
+	
+	return vector[index];
+}
+
+template<class T>
+void vector<T>::set(int index, T* value)
+{
+	if (index < count)
+	{
+		vector[index] = (*value);
+	}
+	else
+		cout << "Wrond index!\n";
+}
+
+template<class T>
+int vector<T>::count()
+{
+	return this->count - 1;
+}
+
+template<class T>
+void vector<T>::print()
+{
+	if (count == 0)
+		cout << "Vector has no elements!\n";
+	else
+		for (int i = 0; i < count; i++)
+		{
+			cout << get(i) << ' ';
+		}
+}
