@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <stdlib.h>
+#include <cstring>
 
 using namespace std;
 
@@ -35,6 +36,8 @@ public:
 	{
 		count--;
 		return vector[count];
+		free(&vector[count]);
+		count--;
 	}
 
 	void remove(int index)
@@ -73,7 +76,7 @@ public:
 	{
 		if (index >= count)
 		{
-			cout << "Wrond index!\n";
+			cout << "Wrong index!\n";
 		}
 		else
 			return vector[index];
@@ -86,7 +89,7 @@ public:
 			vector[index] = value;
 		}
 		else
-			cout << "Wrond index!\n";
+			cout << "Wrong index!\n";
 	}
 
 	int counte()
@@ -104,4 +107,45 @@ public:
 				cout << get(i) << ' ';
 			}
 	}
+
+	void sort(const char* cmp)
+	{
+		if (cmp == nullptr || strcmp(cmp, "descrescator") == 0)
+		{
+			for (int i = 0; i < count - 1; i++)
+			{
+				for (int j = i + 1; j < count; j++)
+				{
+					if (vector[i] < vector[j])
+					{
+						T tmp;
+						tmp = vector[i];
+						vector[i] = vector[j];
+						vector[j] = tmp;
+					}
+				}
+			}
+		}
+		else
+			if (strcmp(cmp, "crescator") == 0)
+			{
+				for (int i = 0; i < count - 1; i++)
+				{
+					for (int j = i + 1; j < count; j++)
+					{
+						if (vector[i] > vector[j])
+						{
+							T tmp;
+							tmp = vector[i];
+							vector[i] = vector[j];
+							vector[j] = tmp;
+						}
+					}
+				}
+			}
+			else
+				cout << "Give a correct value!\n";
+	}
+
+
 };
