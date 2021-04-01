@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Template_Vector.h" />
-    <ClInclude Include="vector_methods.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
