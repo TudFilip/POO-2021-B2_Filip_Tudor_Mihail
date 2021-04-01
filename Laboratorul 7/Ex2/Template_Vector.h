@@ -147,5 +147,11 @@ public:
 				cout << "Give a correct value!\n";
 	}
 
-
+	int firstIndexOf(T* vector,const char* equal)
+	{
+		for (int i = 0; i < count; i++)
+		{
+			if ();
+		}
+	}
 };
