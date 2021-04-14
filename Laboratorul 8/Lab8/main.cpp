@@ -8,6 +8,7 @@ int main()
 {
 	map<string, int> words;
 	string text;
+	//FILE* fin = fopen("in.txt", "r+");
 	getline(ifstream("in.txt"), text, '\0');
 
 	for (int i = 0; i < text.size(); i++)
@@ -23,10 +24,8 @@ int main()
 	{
 		pos = text.find_first_of(delims, start + 1);
 		string item(text.substr(start, pos-start));
-		if (words.count(item) == 0)
-			words[item] = 1;
-		else
-			words[item]++;
+		words[item]++;
+		start = text.find_first_not_of(delims, pos);
 	}
 
 	priority_queue<pair<string, int>, vector<pair<string, int>>, Compare> que;
