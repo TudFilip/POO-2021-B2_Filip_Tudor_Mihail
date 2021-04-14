@@ -7,10 +7,10 @@ int CompareName(Student s1, Student s2)
 	s1.GetName(name_student1);
 	s2.GetName(name_student2);
 
-	if (strcmp(name_student1, name_student2) == 1)
+	if (strcmp(name_student1, name_student2) == 0)
 		return 0;
 	else
-		if (strcmp(name_student1, name_student2) > 1)
+		if (strcmp(name_student1, name_student2) > 0)
 			return 1;
 		else
 			return -1;

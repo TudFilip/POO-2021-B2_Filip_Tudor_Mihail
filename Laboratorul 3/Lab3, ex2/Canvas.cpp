@@ -59,7 +59,7 @@ void Canvas::DrawRect(int left, int top, int right, int bottom, char ch)
 			bottom = tmp;
 		}
 
-		int i, j;
+		int i;
 		for (i = left; i <= right; i++)
 			matrix[top][i] = ch;
 		for (i = top; i <= bottom; i++)

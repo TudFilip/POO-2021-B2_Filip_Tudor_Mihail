@@ -6,6 +6,8 @@ using namespace std;
 
 class Canvas
 {
+    //int* vector = (int*)malloc(100 * sizeof(int)); 
+
     char matrix[256][256];
     int width;
     int height;

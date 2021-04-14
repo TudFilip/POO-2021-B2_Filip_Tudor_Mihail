@@ -1,5 +1,6 @@
 #include "StudentClass.h"
 #include "GlobalFunctions.h"
+#include <iomanip>
 
 int main()
 {
@@ -49,10 +50,10 @@ int main()
 	cout << "Mediile celor doi:\n";
 	s1.AverageGrade(medie1);
 	s1.GetName(nume_student1);
-	cout << "medie " << nume_student1 << ": " << medie1 << "\n";
+	cout << "medie " << nume_student1 << ": " << setprecision(3) << medie1 << "\n";
 	s2.AverageGrade(medie2);
 	s2.GetName(nume_student2);
-	cout << "medie " << nume_student2 << ": " << medie2 << "\n";
+	cout << "medie " << nume_student2 << ": " << setprecision(3)<< medie2 << "\n";
 
 	
 	if (CompareAverageGrade(s1, s2))

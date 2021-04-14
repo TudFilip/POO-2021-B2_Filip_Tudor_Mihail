@@ -20,11 +20,13 @@ int main()
 	v.push(2);
 	v.push(10);
 
-	cout << v.pop();
+	//cout << v.pop()<<endl;
+	v.print();
+	cout << endl;
 	v.sort(typeOfSort());
 	v.print();
-	v.set(3, 3);
-	cout << v.get(3);
+	//v.set(3, 3);
+	//cout << v.get(3);
 
 	return 0;
 }

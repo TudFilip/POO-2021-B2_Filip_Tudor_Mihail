@@ -151,7 +151,7 @@ public:
 	{
 		for (int i = 0; i < count; i++)
 		{
-			if ();
+			if (true);
 		}
 	}
 };

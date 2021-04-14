@@ -10,12 +10,12 @@ void Student::SetName()
 
 void Student::GetName(char student_name[256])
 {
-	strcpy(student_name, name);
+	strcpy(student_name, this->name);
 }
 
 void Student::SetGradeEng(float x) 
 {
-	english = x;
+	this->english = x;
 }
 
 void Student::SetGradeHst(float x)
@@ -45,5 +45,5 @@ void Student::GetGradeMat(float& x)
 
 void Student::AverageGrade(float& x)
 {
-	 x = 1.0f * ((english + history + mathematics)) / 3.0;
+	 x = (english + history + mathematics) / (float)3.0f;
 }
