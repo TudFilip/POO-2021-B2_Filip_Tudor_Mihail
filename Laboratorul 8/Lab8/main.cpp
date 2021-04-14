@@ -7,7 +7,6 @@
 int main()
 {
 	map<string, int> words;
-	priority_queue<pair<string, int>, vector<pair<string, int>>, Compare> prior;
 	string text;
 	getline(ifstream("in.txt"), text, '\0');
 
@@ -30,11 +29,21 @@ int main()
 			words[item]++;
 	}
 
+	priority_queue<pair<string, int>, vector<pair<string, int>>, Compare> que;
 	map<string, int>::iterator it;
 
 	for (it = words.begin(); it != words.end(); it++)
 	{
 		pair<string, int> item(it->first, it->second);
-		prior.push(item);
+		que.push(item);
 	}
+
+	while (que.empty() != true)
+	{
+		cout << que.top().first << " => " << que.top().second << endl;
+		que.pop();
+	}
+
+	system("pause");
+	return 0;
 }
