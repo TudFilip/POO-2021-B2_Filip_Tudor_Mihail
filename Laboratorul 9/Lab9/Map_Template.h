@@ -119,13 +119,13 @@ public:
 
 	bool Delete(const T1& key)
 	{
-		int ok = 0;
+		int ok = 0, idx;
 		for (int i = 0; i < global_index; i++)
 		{
 			if (objects[i].key == key)
 			{
 				ok = 1;
-				int idx = i;
+				idx = i;
 				break;
 			}
 		}
