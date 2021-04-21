@@ -18,4 +18,25 @@ public:
 	
 	Map(): global_index(0) {}
 
+	Map begin()
+	{
+		return &objects[0];
+	}
+
+	Map end()
+	{
+		return &objects[global_index];
+	}
+
+	T2& operator [](const T1& key)
+	{
+		for (int i = 0; i < global_index; i++)
+		{
+			if (objects[i].key == key)
+				return objects[i].value;
+		}
+
+		objects[global_index].key = key;
+		return objects[global_index++].value;
+	}
 };
