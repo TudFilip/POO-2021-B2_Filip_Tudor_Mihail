@@ -117,4 +117,29 @@ public:
 		global_index = 0;
 	}
 
+	bool Delete(const T1& key)
+	{
+		int ok = 0;
+		for (int i = 0; i < global_index; i++)
+		{
+			if (objects[i].key == key)
+			{
+				ok = 1;
+				int idx = i;
+				break;
+			}
+		}
+
+		if (!ok)
+			return false;
+
+		for (int i = idx; i < global_index - 1; i++)
+		{
+			objects[i] = objects[i + 1];
+		}
+		global_index--;
+		return true;
+	}
+
+
 };
