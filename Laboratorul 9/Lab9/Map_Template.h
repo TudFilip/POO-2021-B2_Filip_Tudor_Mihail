@@ -141,5 +141,22 @@ public:
 		return true;
 	}
 
-
+	bool Includes(const Map<T1, T2>& map)
+	{
+		for (int i = 0; i < map.global_index; i++)
+		{
+			int ok = 0;
+			for (int j = 0; j < this->global_index; j++)
+			{
+				if (map.objects[i].key == this->objects[j].key)
+				{
+					ok = 1;
+					break;
+				}
+			}
+			if (!ok)
+				return false;
+		}
+		return true;
+	}
 };
