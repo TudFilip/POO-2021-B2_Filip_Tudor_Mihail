@@ -19,6 +19,8 @@ int main()
         printf("Index:%d, Key=%d, Value=%s\n", index, key, value);
     }
 
+    cout << "------------------\n\n";
+
     m.Set(10, "laborator");
     for (auto [key, value, index] : m)
     {
