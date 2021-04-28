@@ -1,4 +1,4 @@
-#include "tmp_header.h"
+#include "array_header.h"
 
 int main()
 {

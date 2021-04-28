@@ -142,7 +142,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tmp_header.h" />
+    <ClInclude Include="clasa_compare.h" />
+    <ClInclude Include="clasa_iterator.h" />
+    <ClInclude Include="array_header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

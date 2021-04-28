@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <exception>
+#include "clasa_compare.h"
+#include "clasa_iterator.h"
 
 using namespace std;
 
@@ -9,24 +12,12 @@ public:
 	virtual int CompareElements(void* e1, void* e2) = 0;
 };
 
-
-
-template<class T>
-class ArrayIterator
-{
-private:
-	int Current; // mai adaugati si alte date si functii necesare pentru iterator
-
-public:
-
-	ArrayIterator();
-	ArrayIterator& operator ++ ();
-	ArrayIterator& operator -- ();
-	bool operator= (ArrayIterator<T>&);
-	bool operator!=(ArrayIterator<T>&);
-	T* GetElement();
+class index_exception {
+	virtual const char* what() const throw ()
+	{
+		return "Indexul este inafara dimensiunii listei!\n";
+	}
 };
-
 
 template<class T>
 class Array
@@ -48,7 +39,7 @@ public:
 		this->Size = 0;
 		free(this->List);
 		delete List;
-	}; // destructor
+	}// destructor
 	Array(int capacity) {
 		this->Capacity = capacity;
 		this->Size = 0;
@@ -60,7 +51,17 @@ public:
 		memcpy(this->List, otherArray.List, otherArray.Capacity);
 	}// constructor de copiere
 
-	T& operator[] (int index); // arunca exceptie daca index este out of range
+	T& operator[] (int index) {
+		index_exception exc_index;
+		try {
+			if (index < this->Size || index < 0)
+				throw exc_index;
+			return List[index];
+		}
+		catch (exception& exc) {
+			cout << "Exceptia este: " << e.what() << '\n';
+		}
+	}// arunca exceptie daca index este out of range
 
 	const Array<T>& operator+=(const T& newElem); // adauga un element de tipul T la sfarsitul listei si returneaza this
 	const Array<T>& Insert(int index, const T& newElem); // adauga un element pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie

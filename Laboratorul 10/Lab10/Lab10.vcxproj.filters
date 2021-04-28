@@ -20,7 +20,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tmp_header.h">
+    <ClInclude Include="array_header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clasa_iterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clasa_compare.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
