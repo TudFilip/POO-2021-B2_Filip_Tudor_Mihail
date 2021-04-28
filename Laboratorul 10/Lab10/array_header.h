@@ -15,7 +15,7 @@ public:
 class index_exception {
 	virtual const char* what() const throw ()
 	{
-		return "Indexul este inafara dimensiunii listei!\n";
+		return "Indexul este dat gresit!\n";
 	}
 };
 
@@ -54,18 +54,64 @@ public:
 	T& operator[] (int index) {
 		index_exception exc_index;
 		try {
-			if (index < this->Size || index < 0)
+			if (index >= this->Size || index < 0)
 				throw exc_index;
 			return List[index];
 		}
 		catch (exception& exc) {
-			cout << "Exceptia este: " << e.what() << '\n';
+			cout << "Exceptia este: " << exc.what() << '\n';
 		}
 	}// arunca exceptie daca index este out of range
 
-	const Array<T>& operator+=(const T& newElem); // adauga un element de tipul T la sfarsitul listei si returneaza this
-	const Array<T>& Insert(int index, const T& newElem); // adauga un element pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
-	const Array<T>& Insert(int index, const Array<T> otherArray); // adauga o lista pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
+	const Array<T>& operator+=(const T& newElem) {
+		if (this->Size == this->Capacity)
+			realloc(List, this->Capacity * 2);
+		this->List[size] = (T*)malloc(sizeof(newElem));
+		memcpy(this->List[size], newElem, sizeof(newElem));
+		this->Size++;
+		return *this;
+	}// adauga un element de tipul T la sfarsitul listei si returneaza this
+	const Array<T>& Insert(int index, const T& newElem) {
+		index_exception exc_index;
+		try {
+			if (index >= this->Size || index < 0 || index + 1 > this->Capacity)
+				throw exc_index;
+			
+			this->List[size] = (T*)malloc(sizeof(this->List[size - 1]));
+			
+			for (int i = index; i < size; i++)
+			{
+				realloc(this->List[i + 1], sizeof(this->List[i]));
+				memcpy(this->List[i + 1], this->List[i], sizeof(this->List[i]);
+			}
+			realloc(this->List[index], sizeof(newElem));
+			memcpy(this->List[index], newElem, sizeof(newElem));
+			this->Size++;
+			return *this;
+		}
+		catch (exception& exc)
+		{
+			cout << "Exceptia este: " << exc.what() << '\n';
+		}
+		
+	}// adauga un element pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
+	const Array<T>& Insert(int index, const Array<T> otherArray) {
+		index_exception exc_index;
+		try {
+			if (index >= this->Size || index < 0 || index + otherArray.Size > this->Capacity)
+				throw exc_index;
+
+			for (int i = this->Size; i < otherArray.Size; i++)
+			{
+				this->List[i] = (T*)malloc(sizeof(this->List[]))
+			}
+			return *this;
+		}
+		catch (exception& exc)
+		{
+			cout << "Exceptia este: " << exc.what() << '\n';
+		}
+	}// adauga o lista pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
 	const Array<T>& Delete(int index); // sterge un element de pe pozitia index, returneaza this. Daca index e invalid arunca o exceptie
 
 	bool operator=(const Array<T>& otherArray);
