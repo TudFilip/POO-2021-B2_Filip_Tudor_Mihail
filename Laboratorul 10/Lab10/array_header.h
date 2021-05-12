@@ -6,13 +6,7 @@
 
 using namespace std;
 
-class Compare
-{
-public:
-	virtual int CompareElements(void* e1, void* e2) = 0;
-};
-
-class index_exception {
+class index_exception: public exception {
 	virtual const char* what() const throw ()
 	{
 		return "Indexul este dat gresit!\n";
@@ -38,7 +32,6 @@ public:
 		this->Capacity = 0;
 		this->Size = 0;
 		free(this->List);
-		delete List;
 	}// destructor
 	Array(int capacity) {
 		this->Capacity = capacity;
@@ -56,7 +49,7 @@ public:
 		try {
 			if (index >= this->Size || index < 0)
 				throw exc_index;
-			return List[index];
+			return *List[index];
 		}
 		catch (exception& exc) {
 			cout << "Exceptia este: " << exc.what() << '\n';
@@ -64,28 +57,37 @@ public:
 	}// arunca exceptie daca index este out of range
 
 	const Array<T>& operator+=(const T& newElem) {
+		if (this->Capacity == 0)
+		{
+			this->Capacity = 1;
+			this->List = (T**)malloc(sizeof(T*) * this->Capacity);
+		}
 		if (this->Size == this->Capacity)
-			realloc(List, this->Capacity * 2);
-		this->List[size] = (T*)malloc(sizeof(newElem));
-		memcpy(this->List[size], newElem, sizeof(newElem));
+		{
+			this->List = (T**)realloc(List, sizeof(T*) * Capacity * 2);
+			this->Capacity *= 2;
+		}
+		this->List[Size] = (T*)malloc(sizeof(newElem));
+		memcpy(this->List[Size], &newElem, sizeof(newElem));
 		this->Size++;
 		return *this;
 	}// adauga un element de tipul T la sfarsitul listei si returneaza this
+
 	const Array<T>& Insert(int index, const T& newElem) {
 		index_exception exc_index;
 		try {
-			if (index >= this->Size || index < 0 || index + 1 > this->Capacity)
+			if (index > this->Size || index < 0 || this->Size + 1 > this->Capacity)
 				throw exc_index;
 			
-			this->List[size] = (T*)malloc(sizeof(this->List[size - 1]));
+			this->List[Size] = (T*)malloc(sizeof(this->List[Size - 1]));
 			
-			for (int i = index; i < size; i++)
+			for (int i = index; i < Size; i++)
 			{
 				realloc(this->List[i + 1], sizeof(this->List[i]));
-				memcpy(this->List[i + 1], this->List[i], sizeof(this->List[i]);
+				memcpy(this->List[i + 1], this->List[i], sizeof(this->List[i]));
 			}
 			realloc(this->List[index], sizeof(newElem));
-			memcpy(this->List[index], newElem, sizeof(newElem));
+			memcpy(this->List[index], &newElem, sizeof(newElem));
 			this->Size++;
 			return *this;
 		}
@@ -95,16 +97,27 @@ public:
 		}
 		
 	}// adauga un element pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
+
 	const Array<T>& Insert(int index, const Array<T> otherArray) {
 		index_exception exc_index;
 		try {
-			if (index >= this->Size || index < 0 || index + otherArray.Size > this->Capacity)
+			if (index >= this->Size || index < 0 || this->Size + otherArray.Size > this->Capacity)
 				throw exc_index;
 
-			for (int i = this->Size; i < otherArray.Size; i++)
+			this->Size += otherArray.Size;
+
+			for (int i = this->Size - 1; i > index + otherArray.Size - 1; i--)
 			{
-				this->List[i] = (T*)malloc(sizeof(this->List[]))
+				realloc(this->List[i], sizeof(this->List[i - otherArray.Size]));
+				memcpy(this->List[i], this->List[i - otherArray.Size], sizeof(this->List[i - otherArray.Size]));
 			}
+
+			for (int i = otherArray.Size - 1; i >= 0; i--)
+			{
+				realloc(this->List[index + i], sizeof(otherArray.List[i]));
+				memcpy(this->List[index + i], otherArray.List[i], sizeof(otherArray.List[i]));
+			}
+
 			return *this;
 		}
 		catch (exception& exc)
@@ -112,9 +125,42 @@ public:
 			cout << "Exceptia este: " << exc.what() << '\n';
 		}
 	}// adauga o lista pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
-	const Array<T>& Delete(int index); // sterge un element de pe pozitia index, returneaza this. Daca index e invalid arunca o exceptie
 
-	bool operator=(const Array<T>& otherArray);
+	const Array<T>& Delete(int index) {
+		index_exception exc_index;
+		try {
+			if (index >= this->Size || index < 0)
+				throw exc_index;
+
+			for (int i = index; i < this->Size; i++)
+			{
+				//this->List[i] = (T*)realloc(this->List[i], sizeof(this->List[i + 1]));
+				List[i] = List[i + 1];
+				//memcpy(this->List[i], this->List[i + 1], sizeof(this->List[i + 1]));
+			}
+			//free(this->List[this->Size - 1]);
+			this->Size--;
+			return *this;
+		}
+		catch (exception& exc)
+		{
+			cout << "Exceptia este: " << exc.what() << '\n';
+		}
+	}// sterge un element de pe pozitia index, returneaza this. Daca index e invalid arunca o exceptie
+
+	bool operator=(const Array<T>& otherArray) {
+		this->Size = otherArray.Size;
+		this->Capacity = otherArray.Capacity;
+		free(this->List);
+		delete this->List;
+		this->List = (T**)malloc(sizeof(T*) * otherArray.Capacity);
+		for (int i = 0; i < otherArray.Size; i++)
+		{
+			this->List[i] = (T*)malloc(sizeof(otherArray.List[i]));
+			memcpy(this->List[i], otherArray.List[i], sizeof(otherArray.List[i]));
+		}
+		return true;
+	}
 
 	void Sort(); // sorteaza folosind comparatia intre elementele din T
 	void Sort(int(*compare)(const T&, const T&)); // sorteaza folosind o functie de comparatie
@@ -129,9 +175,15 @@ public:
 	int Find(const T& elem, int(*compare)(const T&, const T&));//  cauta un element folosind o functie de comparati
 	int Find(const T& elem, Compare* comparator);//  cauta un element folosind un comparator
 
-	int GetSize();
-	int GetCapacity();
+	int GetSize()
+	{
+		return this->Size;
+	}
+	int GetCapacity()
+	{
+		return this->Capacity;
+	}
 
-	ArrayIterator<T> GetBeginIterator();
-	ArrayIterator<T> GetEndIterator();
+	//ArrayIterator<T> GetBeginIterator();
+	//ArrayIterator<T> GetEndIterator();
 };
