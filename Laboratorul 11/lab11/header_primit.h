@@ -1,4 +1,8 @@
 #pragma once
+#include<iostream>
+
+using namespace std;
+
 template <class T>
 void sortare_cu_erori(T* a, int n) {
 	for (int i = 1; i < n; i++) {
