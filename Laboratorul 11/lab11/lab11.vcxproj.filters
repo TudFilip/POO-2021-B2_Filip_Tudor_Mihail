@@ -18,9 +18,15 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="main_primit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sort_template.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header_primit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

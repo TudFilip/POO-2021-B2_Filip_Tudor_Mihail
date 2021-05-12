@@ -84,7 +84,7 @@ public:
 						List[i] = List[j];
 						List[j] = tmp;
 						
-						T tmp = List[i];
+						tmp = List[i];
 						List[i] = List[j];
 						List[j] = tmp;
 					}

@@ -140,8 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="main_primit.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header_primit.h" />
     <ClInclude Include="sort_template.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
