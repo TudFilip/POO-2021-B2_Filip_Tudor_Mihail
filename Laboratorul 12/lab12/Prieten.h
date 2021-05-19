@@ -16,4 +16,8 @@ public:
 	BirthDate Prieten_DateOfBirth;
 	Adress Prieten_Adress;
 	char* Prieten_PhoneNumber;
+
+	const char* GetType() {
+		return "Prieten";
+	}
 };

@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Agenda.h" />
     <ClInclude Include="Coleg.h" />
     <ClInclude Include="Contact.h" />
     <ClInclude Include="Cunoscut.h" />

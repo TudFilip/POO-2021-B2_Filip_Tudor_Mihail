@@ -5,6 +5,6 @@ using namespace std;
 
 class Contact {
 protected:
-	char* nume;
-	char* prenume;
+	char* Nume;
+	virtual const char* GetType() = 0;
 };
